@@ -1,0 +1,19 @@
+{
+  "name": "horoscope-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "fastify": "^4.22.0",
+    "papr": "^14.1.0",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "tsx": "^3.12.7",
+    "typescript": "^5.2.2"
+  }
+}
