@@ -1,5 +1,7 @@
 import fastify, { FastifyInstance } from 'fastify'
 import { SignRoutes } from './routes/signsRoutes'
+import multipart from '@fastify/multipart'
+import './services/cloudinary'
 import 'dotenv/config'
 
 class App {
@@ -7,6 +9,7 @@ class App {
   public signRoutes: SignRoutes
   constructor() {
     this.app = fastify()
+    this.app.register(multipart)
     this.signRoutes = new SignRoutes(this.app)
 
     this.routes()
