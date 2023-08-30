@@ -1,6 +1,8 @@
 import { ZodError } from 'zod'
 import { ObjectId } from 'mongodb'
 import Sign from '../models/signModel'
+import { IFormData } from '../@types/ISignController'
+import { uploadClaudinary } from '../utils/uploadClaudinary'
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import { createSignSchema, getSignSchema } from '../schemas/SignSchemas'
 
@@ -44,12 +46,30 @@ export class SignController {
 
   async store(request: FastifyRequest, reply: FastifyReply) {
     try {
-      const createSign = createSignSchema.parse(request.body)
+      const formData = (await request.file()) as unknown as IFormData
 
-      const signCreated = await Sign.insertOne(createSign)
+      const formatData = {
+        name: formData.fields.name.value,
+        description: formData.fields.description.value,
+        period: formData.fields.period.value,
+        compatility: JSON.parse(formData.fields.compatility.value),
+        file: formData.fields.file,
+      }
 
-      reply.status(201).send({
-        message: signCreated,
+      const data = createSignSchema.parse(formatData)
+
+      const saveResult = await uploadClaudinary(data.file)
+
+      const sign = await Sign.insertOne({
+        name: data.name,
+        image: saveResult.url,
+        description: data.description,
+        period: data.period,
+        compatility: data.compatility,
+      })
+
+      reply.status(200).send({
+        sign,
       })
     } catch (error) {
       const { message } = error as ZodError
