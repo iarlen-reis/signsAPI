@@ -7,10 +7,14 @@
     "dev": "tsx watch src/server.ts"
   },
   "dependencies": {
+    "@fastify/multipart": "^7.7.3",
+    "cloudinary": "^1.40.0",
     "dotenv": "^16.3.1",
     "fastify": "^4.22.0",
+    "form-auto-content": "^3.2.0",
     "mongodb": "^6.0.0",
     "papr": "^14.1.0",
+    "tap": "^16.3.8",
     "zod": "^3.22.2"
   },
   "devDependencies": {
