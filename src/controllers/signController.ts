@@ -50,9 +50,10 @@ export class SignController {
 
       const formatData = {
         name: formData.fields.name.value,
-        description: formData.fields.description.value,
+        description: JSON.parse(formData.fields.description.value),
         period: formData.fields.period.value,
         compatility: JSON.parse(formData.fields.compatility.value),
+        characteristics: JSON.parse(formData.fields.characteristics.value),
         file: formData.fields.file,
       }
 
@@ -66,6 +67,7 @@ export class SignController {
         description: data.description,
         period: data.period,
         compatility: data.compatility,
+        characteristics: data.characteristics,
       })
 
       reply.status(200).send({

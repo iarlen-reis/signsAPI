@@ -17,7 +17,7 @@ class App {
   }
 
   start() {
-    this.app.listen({ port: 3000 }, () => {
+    this.app.listen({ port: 3333 }, () => {
       console.log('Server listening on port 3000')
     })
   }

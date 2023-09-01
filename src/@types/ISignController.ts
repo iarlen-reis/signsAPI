@@ -23,6 +23,9 @@ export interface IFormData {
     compatility: {
       value: string
     }
+    characteristics: {
+      value: string
+    }
     file: IFile
   }
 }

@@ -6,9 +6,10 @@ const database = new Database()
 const signSchema = schema({
   name: types.string(),
   image: types.string(),
-  description: types.string(),
+  description: types.array(types.string()),
   period: types.string(),
   compatility: types.array(types.string()),
+  characteristics: types.array(types.string()),
 })
 
 export type SignDocument = (typeof signSchema)[0]
