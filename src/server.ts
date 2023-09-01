@@ -21,6 +21,10 @@ class App {
   }
 
   start() {
+    this.app.get('/', (request, reply) => {
+      reply.status(200).type('html').send('<h1>Horoscope API</h1>')
+    })
+
     this.app.listen({ port: PORT }, () => {
       console.log(`Server running on port ${PORT}`)
     })
