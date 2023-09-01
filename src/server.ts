@@ -13,7 +13,10 @@ class App {
   constructor() {
     this.app = fastify()
     this.app.register(multipart)
-    this.app.register(cors, { origin: false })
+    this.app.register(cors, {
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    })
     this.signRoutes = new SignRoutes(this.app)
 
     this.routes()
