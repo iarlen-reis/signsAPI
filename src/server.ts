@@ -5,6 +5,8 @@ import cors from '@fastify/cors'
 import './services/cloudinary'
 import 'dotenv/config'
 
+const PORT: number = Number(process.env.PORT) || 3333
+
 class App {
   public app: FastifyInstance
   public signRoutes: SignRoutes
@@ -19,8 +21,8 @@ class App {
   }
 
   start() {
-    this.app.listen({ port: 3333 }, () => {
-      console.log('Server listening on port 3000')
+    this.app.listen({ port: PORT }, () => {
+      console.log(`Server running on port ${PORT}`)
     })
   }
 
