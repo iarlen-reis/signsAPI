@@ -1,6 +1,7 @@
 import fastify, { FastifyInstance } from 'fastify'
 import { SignRoutes } from './routes/signsRoutes'
 import multipart from '@fastify/multipart'
+import cors from '@fastify/cors'
 import './services/cloudinary'
 import 'dotenv/config'
 
@@ -10,6 +11,7 @@ class App {
   constructor() {
     this.app = fastify()
     this.app.register(multipart)
+    this.app.register(cors, { origin: false })
     this.signRoutes = new SignRoutes(this.app)
 
     this.routes()
