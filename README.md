@@ -1,3 +1,5 @@
+<img src="./src/assets/github.png" alt="imagem de um  signo em json">
+
 # Signs API
 
 <p>
