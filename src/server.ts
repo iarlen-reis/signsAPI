@@ -15,7 +15,7 @@ class App {
     this.app.register(multipart)
     this.app.register(cors, {
       origin: '*',
-      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      methods: ['GET'],
     })
     this.signRoutes = new SignRoutes(this.app)
 
